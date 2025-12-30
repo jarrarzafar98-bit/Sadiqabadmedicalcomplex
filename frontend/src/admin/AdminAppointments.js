@@ -19,7 +19,7 @@ const AdminAppointments = () => {
     try {
       const params = {};
       if (selectedDoctor) params.doctor_id = selectedDoctor;
-      if (selectedStatus) params.status = selectedStatus;
+      if (selectedStatus) params.filter_status = selectedStatus;
       if (selectedDate) params.date = selectedDate;
 
       const [appointmentsRes, doctorsRes] = await Promise.all([
