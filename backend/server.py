@@ -259,6 +259,8 @@ async def seed_initial_data():
         {
             "id": str(uuid.uuid4()), "title": "The Importance of Regular Health Check-ups",
             "slug": "importance-regular-health-checkups",
+            "published_at": now.isoformat(),
+            "created_at": now.isoformat(),
             "content": """<p>Prevention is better than cure. Regular health check-ups can detect problems before they become serious.</p>
 <h2>What to Expect</h2>
 <p>A comprehensive health check-up typically includes physical examination, blood tests, and screenings appropriate for your age and risk factors.</p>
