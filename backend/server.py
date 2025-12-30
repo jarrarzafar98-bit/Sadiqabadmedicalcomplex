@@ -435,7 +435,10 @@ async def get_doctors(
     
     # Get specialties for mapping
     specialties = await specialties_collection.find().to_list(100)
-    specialty_map = {s["id"]: s for s in specialties}
+    specialty_map = {}
+    for s in specialties:
+        s.pop("_id", None)
+        specialty_map[s["id"]] = s
     
     result = []
     for doc in doctors:
