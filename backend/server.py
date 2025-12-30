@@ -200,6 +200,8 @@ async def seed_initial_data():
         {
             "id": str(uuid.uuid4()), "title": "Common Eye Problems and When to See a Specialist",
             "slug": "common-eye-problems-when-see-specialist",
+            "published_at": now.isoformat(),
+            "created_at": now.isoformat(),
             "content": """<p>Your eyes are precious, and recognizing when to seek professional help is crucial. Here are common eye problems that warrant a visit to an eye specialist:</p>
 <h2>1. Blurred Vision</h2>
 <p>Sudden or gradual blurring can indicate various conditions from simple refractive errors to more serious problems.</p>
