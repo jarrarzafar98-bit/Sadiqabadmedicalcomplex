@@ -76,10 +76,12 @@ const BlogPostPage = () => {
                   <span className="bg-primary-50 text-primary-600 px-3 py-1 rounded">
                     {post.category}
                   </span>
-                  <span className="flex items-center gap-1">
-                    <Calendar size={16} />
-                    {format(parseISO(post.published_at), 'MMMM d, yyyy')}
-                  </span>
+                  {post.published_at && (
+                    <span className="flex items-center gap-1">
+                      <Calendar size={16} />
+                      {format(parseISO(post.published_at), 'MMMM d, yyyy')}
+                    </span>
+                  )}
                   <span className="flex items-center gap-1">
                     <User size={16} />
                     {post.author}
