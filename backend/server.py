@@ -645,14 +645,14 @@ async def get_available_slots(doctor_id: str, date: str):
 @app.get("/api/appointments")
 async def get_appointments(
     doctor_id: Optional[str] = None,
-    status: Optional[str] = None,
+    filter_status: Optional[str] = None,
     date: Optional[str] = None,
     current_user: dict = Depends(get_current_user)
 ):
     query = {}
     if doctor_id:
         query["doctor_id"] = doctor_id
-    if status:
+    if filter_status:
         query["status"] = status
     if date:
         query["date_time"] = {"$regex": f"^{date}"}
