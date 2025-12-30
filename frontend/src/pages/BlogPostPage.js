@@ -163,9 +163,11 @@ const BlogPostPage = () => {
                         <h4 className="font-medium text-gray-900 text-sm line-clamp-2">
                           {related.title}
                         </h4>
-                        <p className="text-xs text-gray-500 mt-1">
-                          {format(parseISO(related.published_at), 'MMM d, yyyy')}
-                        </p>
+                        {related.published_at && (
+                          <p className="text-xs text-gray-500 mt-1">
+                            {format(parseISO(related.published_at), 'MMM d, yyyy')}
+                          </p>
+                        )}
                       </Link>
                     ))}
                   </div>
