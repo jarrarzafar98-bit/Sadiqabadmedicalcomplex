@@ -240,6 +240,8 @@ async def seed_initial_data():
         {
             "id": str(uuid.uuid4()), "title": "Managing Asthma: A Complete Guide",
             "slug": "managing-asthma-complete-guide",
+            "published_at": now.isoformat(),
+            "created_at": now.isoformat(),
             "content": """<p>Asthma affects millions worldwide. With proper management, most people with asthma can lead active, healthy lives.</p>
 <h2>Understanding Asthma</h2>
 <p>Asthma is a chronic condition affecting the airways. It causes inflammation and narrowing of the bronchial tubes.</p>
