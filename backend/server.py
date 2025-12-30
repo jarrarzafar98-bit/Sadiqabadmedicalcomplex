@@ -220,6 +220,8 @@ async def seed_initial_data():
         {
             "id": str(uuid.uuid4()), "title": "Neurological Warning Signs You Shouldn't Ignore",
             "slug": "neurological-warning-signs",
+            "published_at": now.isoformat(),
+            "created_at": now.isoformat(),
             "content": """<p>The nervous system controls everything we do. Recognizing warning signs early can make a significant difference. Here are signs that need attention:</p>
 <h2>1. Persistent Headaches</h2>
 <p>Headaches that are severe, sudden, or different from usual should be evaluated.</p>
