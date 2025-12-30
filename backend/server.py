@@ -175,10 +175,13 @@ async def seed_initial_data():
     await diagnostic_tests_collection.insert_many(diagnostic_tests_data)
     
     # Seed blog posts
+    now = datetime.utcnow()
     blog_posts_data = [
         {
             "id": str(uuid.uuid4()), "title": "Understanding Heart Health: Tips for a Healthy Heart",
             "slug": "understanding-heart-health-tips",
+            "published_at": now.isoformat(),
+            "created_at": now.isoformat(),
             "content": """<p>Heart disease remains one of the leading causes of death worldwide. However, many risk factors are within our control. Here are some essential tips for maintaining a healthy heart:</p>
 <h2>1. Eat a Heart-Healthy Diet</h2>
 <p>Focus on fruits, vegetables, whole grains, and lean proteins. Limit saturated fats, trans fats, and sodium intake.</p>
