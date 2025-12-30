@@ -824,15 +824,15 @@ async def delete_diagnostic_test(test_id: str, current_user: dict = Depends(requ
 @app.get("/api/diagnostic-bookings")
 async def get_diagnostic_bookings(
     test_id: Optional[str] = None,
-    status: Optional[str] = None,
+    filter_status: Optional[str] = None,
     date: Optional[str] = None,
     current_user: dict = Depends(get_current_user)
 ):
     query = {}
     if test_id:
         query["test_id"] = test_id
-    if status:
-        query["status"] = status
+    if filter_status:
+        query["status"] = filter_status
     if date:
         query["date_time"] = {"$regex": f"^{date}"}
     
