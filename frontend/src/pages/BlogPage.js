@@ -121,10 +121,12 @@ const BlogPage = () => {
                           <span className="bg-primary-50 text-primary-600 px-2 py-1 rounded text-xs">
                             {post.category}
                           </span>
-                          <span className="flex items-center gap-1">
-                            <Calendar size={14} />
-                            {format(parseISO(post.published_at), 'MMM d, yyyy')}
-                          </span>
+                          {post.published_at && (
+                            <span className="flex items-center gap-1">
+                              <Calendar size={14} />
+                              {format(parseISO(post.published_at), 'MMM d, yyyy')}
+                            </span>
+                          )}
                         </div>
                         <h2 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-2">
                           <Link to={`/blog/${post.slug}`} className="hover:text-primary-600">
