@@ -120,8 +120,11 @@ export const updateDiagnosticBooking = (id, data) => api.put(`/api/diagnostic-bo
 
 // Blog
 export const getBlogPosts = (params = {}) => {
-  const queryString = new URLSearchParams(params).toString();
-  return api.get(`/api/blog?${queryString}`);
+  const cleanParams = Object.fromEntries(
+    Object.entries(params).filter(([_, v]) => v != null && v !== '')
+  );
+  const queryString = new URLSearchParams(cleanParams).toString();
+  return api.get(`/api/blog${queryString ? `?${queryString}` : ''}`);
 };
 export const getBlogPost = (slug) => api.get(`/api/blog/${slug}`);
 export const getBlogCategories = () => api.get('/api/blog/categories');
