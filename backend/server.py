@@ -1038,8 +1038,8 @@ async def get_dashboard_analytics(current_user: dict = Depends(get_current_user)
     
     # Appointment status breakdown
     appointment_stats = {}
-    for status in ["new", "confirmed", "completed", "cancelled", "no_show"]:
-        appointment_stats[status] = await appointments_collection.count_documents({"status": status})
+    for apt_status in ["new", "confirmed", "completed", "cancelled", "no_show"]:
+        appointment_stats[apt_status] = await appointments_collection.count_documents({"status": apt_status})
     
     # Recent appointments
     recent_appointments = await appointments_collection.find().sort("created_at", -1).limit(5).to_list(5)
