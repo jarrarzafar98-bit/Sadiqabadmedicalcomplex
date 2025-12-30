@@ -17,7 +17,7 @@ const AdminDiagnosticBookings = () => {
   const fetchData = async () => {
     try {
       const params = {};
-      if (selectedStatus) params.status = selectedStatus;
+      if (selectedStatus) params.filter_status = selectedStatus;
       if (selectedDate) params.date = selectedDate;
 
       const [bookingsRes, testsRes] = await Promise.all([
