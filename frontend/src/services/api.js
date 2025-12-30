@@ -83,8 +83,11 @@ export const getAvailableSlots = (doctorId, date) =>
 
 // Appointments
 export const getAppointments = (params = {}) => {
-  const queryString = new URLSearchParams(params).toString();
-  return api.get(`/api/appointments?${queryString}`);
+  const cleanParams = Object.fromEntries(
+    Object.entries(params).filter(([_, v]) => v != null && v !== '')
+  );
+  const queryString = new URLSearchParams(cleanParams).toString();
+  return api.get(`/api/appointments${queryString ? `?${queryString}` : ''}`);
 };
 export const getAppointment = (id) => api.get(`/api/appointments/${id}`);
 export const createAppointment = (data) => api.post('/api/appointments', data);
