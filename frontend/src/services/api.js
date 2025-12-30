@@ -52,8 +52,12 @@ export const deleteSpecialty = (id) => api.delete(`/api/specialties/${id}`);
 
 // Doctors
 export const getDoctors = (params = {}) => {
-  const queryString = new URLSearchParams(params).toString();
-  return api.get(`/api/doctors?${queryString}`);
+  // Filter out undefined/null values
+  const cleanParams = Object.fromEntries(
+    Object.entries(params).filter(([_, v]) => v != null && v !== '')
+  );
+  const queryString = new URLSearchParams(cleanParams).toString();
+  return api.get(`/api/doctors${queryString ? `?${queryString}` : ''}`);
 };
 export const getDoctor = (id) => api.get(`/api/doctors/${id}`);
 export const createDoctor = (data) => api.post('/api/doctors', data);
