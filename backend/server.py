@@ -653,7 +653,7 @@ async def get_appointments(
     if doctor_id:
         query["doctor_id"] = doctor_id
     if filter_status:
-        query["status"] = status
+        query["status"] = filter_status
     if date:
         query["date_time"] = {"$regex": f"^{date}"}
     
