@@ -96,8 +96,11 @@ export const cancelAppointment = (id) => api.delete(`/api/appointments/${id}`);
 
 // Diagnostic Tests
 export const getDiagnosticTests = (params = {}) => {
-  const queryString = new URLSearchParams(params).toString();
-  return api.get(`/api/diagnostic-tests?${queryString}`);
+  const cleanParams = Object.fromEntries(
+    Object.entries(params).filter(([_, v]) => v != null && v !== '')
+  );
+  const queryString = new URLSearchParams(cleanParams).toString();
+  return api.get(`/api/diagnostic-tests${queryString ? `?${queryString}` : ''}`);
 };
 export const getDiagnosticTest = (id) => api.get(`/api/diagnostic-tests/${id}`);
 export const createDiagnosticTest = (data) => api.post('/api/diagnostic-tests', data);
