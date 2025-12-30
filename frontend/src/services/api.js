@@ -109,8 +109,11 @@ export const deleteDiagnosticTest = (id) => api.delete(`/api/diagnostic-tests/${
 
 // Diagnostic Bookings
 export const getDiagnosticBookings = (params = {}) => {
-  const queryString = new URLSearchParams(params).toString();
-  return api.get(`/api/diagnostic-bookings?${queryString}`);
+  const cleanParams = Object.fromEntries(
+    Object.entries(params).filter(([_, v]) => v != null && v !== '')
+  );
+  const queryString = new URLSearchParams(cleanParams).toString();
+  return api.get(`/api/diagnostic-bookings${queryString ? `?${queryString}` : ''}`);
 };
 export const createDiagnosticBooking = (data) => api.post('/api/diagnostic-bookings', data);
 export const updateDiagnosticBooking = (id, data) => api.put(`/api/diagnostic-bookings/${id}`, data);
